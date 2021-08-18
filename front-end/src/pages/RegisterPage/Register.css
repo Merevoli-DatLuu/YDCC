@@ -1,0 +1,88 @@
+.registerPage {
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+img {
+    width: 100px;
+    margin: 10px 0;
+}
+
+#registerForm {
+    width: 50%;
+}
+
+.form-group {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.action {
+    justify-content: space-between;
+}
+
+.form-group i {
+    font-size: 22px;
+    padding: 10px;
+    color: white;
+    background-color: #0097e6;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    outline: none;
+    border: 1px solid #666;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.form-group p {
+    cursor: pointer;
+}
+
+#registerForm button {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 18px;
+    font-weight: 500;
+    color: #0097e6;
+    outline: none;
+    border: 2px solid #0097e6;
+    background-color: white;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+#registerForm button:hover {
+    color: white;
+    background-color: #0097e6;
+}
+
+#registerForm button:active {
+    transform: scale(0.9);
+}
+@media screen and (min-width: 414px) and (max-width: 767px) {
+    .registerPage {
+        width: 90%;
+    }
+
+    #registerForm {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    #registerForm {
+        width: 100%;
+    }
+}
