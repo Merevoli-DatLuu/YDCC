@@ -1,0 +1,53 @@
+.footer {
+    width: 100vw;
+    height: fit-content;
+    background-color: whitesmoke;
+    padding: 10px 0;
+    margin-top: 20px;
+}
+
+.footer-container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.teamInfo {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.members, .units, .contactInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.members h4, 
+.units h4, 
+.contactInfo h4 {
+    color: #333;
+}
+
+.teamName {
+    width: 100%;
+    border-top: 1px solid #999;
+    text-align: center;
+}
+
+@media screen and (min-width: 414px) and (max-width: 767px) {
+    .teamInfo {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .teamInfo {
+        flex-wrap: wrap;
+    }
+}
