@@ -1,0 +1,52 @@
+####################################################
+#                                                  #
+#  This file is used for testing                   #
+#  Used by REST Client extensions in VSCode        #
+#                                                  # 
+####################################################
+
+
+@access_token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjI5NTQ1MzI2LCJqdGkiOiI2MGIwY2U0ZTM2NDA0MWIyODMzZTljNGJlYTI3YTE3NiIsInVzZXJfaWQiOjJ9.cOtcsC0Kwg5FW4tse34nYVdV78_RTe3AXSo-Wc446ss
+
+
+########################
+#    1. User Module    #
+########################
+
+
+### Test Register
+POST http://127.0.0.1:8000/api/v1/user/register HTTP/1.1
+content-type: application/json
+
+{
+    "username": "0129283742",
+    "email": "datluu.1702@gmail.com",
+    "password1": "dat123!@#",
+    "password2": "dat123!@#",
+    "name": "Lưu Thành Đạt",
+    "date_of_birth": "2000-02-17",
+    "phone": "0776583337"
+}
+
+
+### User Login
+POST http://127.0.0.1:8000/api/v1/user/login HTTP/1.1
+content-type: application/json
+
+{
+    "username": "0129283742",
+    "password": "dat123!@#"
+}
+
+
+### User Change Password
+POST http://127.0.0.1:8000/api/v1/user/change-password HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{access_token}}
+
+{
+    "old_password": "dat1124",
+    "new_password1": "dat1234",
+    "new_password2": "dat123456!@#"
+}
+
