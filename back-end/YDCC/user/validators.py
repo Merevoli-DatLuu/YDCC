@@ -1,6 +1,9 @@
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 
+import re
+
+
 def validate_secure_password(value):
     """
     Check password length >= 8 and contains alphabets & digits
@@ -11,18 +14,23 @@ def validate_secure_password(value):
             _("Password length at least 8 characters ")
         )
 
-    have_alphabets = False
+    have_upper_alphabets = False
+    have_lower_alphabets = False
     have_digits = False
+    have_special_char = False
 
     for c in value:
         if c.isalpha():
-            have_alphabets = True
-        if c.isdigit():
+            if 'A' <= c <= 'Z':
+                have_upper_alphabets = True
+            elif 'a' <= c <= 'z':
+                have_lower_alphabets = True
+        elif c.isdigit():
             have_digits = True
-        if have_alphabets and have_digits:
-            break
+        else:
+            have_special_char = True
 
-    if not (have_alphabets and have_digits):
+    if not (have_upper_alphabets and have_lower_alphabets and have_digits and have_special_char):
         raise ValidationError(
             _("Password must have alphabets and digits")
         )

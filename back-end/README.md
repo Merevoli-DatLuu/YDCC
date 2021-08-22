@@ -31,4 +31,4 @@ python manage.py runserver
 ```
 
 **Admin account**
-admin:flazer123!@#
+admin:Flazer@123
