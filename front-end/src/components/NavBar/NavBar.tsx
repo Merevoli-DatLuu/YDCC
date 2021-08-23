@@ -19,7 +19,7 @@ const NavBar = () => {
                     <li className="nav-listItem">Giao dịch điện tử</li>
                     <li className="nav-listItem">Tra cứu thông tin</li>
                     <li className="nav-listItem">Liên hệ</li>
-                    <li className="nav-listItem">Hỏi-đáp</li>
+                    <Link className="link" to="/chat"><li className="nav-listItem">Hỏi-đáp</li></Link>
                 </ul>
             </div>
         </nav>
