@@ -19,6 +19,11 @@ class AccountRegisterSerializer(RegisterSerializer):
         return data
     
     def save(self, request):
+        if Account.objects.filter(phone=self.data.get('phone')).exists():
+            raise serializers.ValidationError(
+                "Phone number is duplicated"
+            )
+            
         user = super().save(request)
         user.name = self.data.get('name')
         user.date_of_birth = self.data.get('date_of_birth')

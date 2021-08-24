@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'dj_rest_auth.registration',
     'allauth.socialaccount',
+    'channels',
     'corsheaders',
     'user.apps.UserConfig',
     'citizen.apps.CitizenConfig',
@@ -86,6 +87,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'YDCC.wsgi.application'
+ASGI_APPLICATION = 'YDCC.asgi.application'
+
 
 AUTH_USER_MODEL = 'user.Account'
 
@@ -218,3 +221,14 @@ CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = TIME_ZONE
+
+
+CHANNEL_LAYERS = {
+    'default': {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+        # 'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        # 'CONFIG': {
+        #     'hosts': [('127.0.0.1', 6379)]
+        # }
+    }
+}
