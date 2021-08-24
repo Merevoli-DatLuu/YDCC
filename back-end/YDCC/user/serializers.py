@@ -38,4 +38,4 @@ class AccountChangePasswordSerializer(PasswordChangeSerializer):
 class AccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
-        fields = ['username', 'name', 'date_of_birth', 'email', 'phone', 'picture', 'date_joined', 'last_login']
+        fields = ['username', 'name', 'date_of_birth', 'email', 'phone', 'picture', 'is_staff', 'date_joined', 'last_login']
