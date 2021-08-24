@@ -12,6 +12,7 @@ const Messages = (props: {messages: Array<{user: string, text: string}>, name: s
     // let elemTop;
     // let elemHeight = document.querySelector('.messages')?.scrollHeight;
     // // elemTop = document.querySelector('.messages')?.scrollTop;
+
     const elem = document.querySelector('.messages');
     const elemHeight = elem?.scrollHeight;
 
@@ -20,7 +21,6 @@ const Messages = (props: {messages: Array<{user: string, text: string}>, name: s
     // });
 
     useEffect(() => {
-        console.log("Hello");
         elemHeight && setHeight(elemHeight);
         elem && (elem.scrollTop = elem.scrollHeight);
     }, [elem, elemHeight]);

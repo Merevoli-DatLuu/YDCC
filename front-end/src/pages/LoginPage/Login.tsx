@@ -1,17 +1,26 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './Login.css';
 import logo from '../../assets/bhxh-logo.jpg';
 import { useForm } from "react-hook-form";
 import Errors from '../../components/Errors/Errors';
-import { Link } from 'react-router-dom';
-import { useAppDispatch } from '../../app/hooks';
-import {authLogin} from '../../features/authFeature';
+import { Link, useHistory } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import {authLogin, selectAuthLogin} from '../../features/authFeature';
 
-const Login = (history: History) => {
+const Login = () => {
+    const history = useHistory();
     const [idBHYT, setIdBHYT] = useState("");
     const [password, setPassword] = useState("");
     const { register, handleSubmit, formState: { errors } } = useForm();
     const dispatch = useAppDispatch();
+    const userLogin = useAppSelector(selectAuthLogin);
+
+    useEffect(() =>{
+        if(userLogin.access_token !== "") {
+            localStorage.setItem("YDCC_token", JSON.stringify(userLogin));
+            history.push("/");
+        }
+    }, [userLogin, history]);
 
     const onSubmit = (loginFormValue: {idBHYT: string, password: string}) => {
         dispatch(authLogin(loginFormValue));

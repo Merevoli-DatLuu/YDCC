@@ -1,0 +1,158 @@
+.extend {
+    width: 80%;
+    margin: 0 auto;
+}
+
+#divider {
+    display: none;
+    height: 1px;
+    width: 50%;
+    margin: 0 auto;
+    background-color: lightgray;
+}
+
+h1 {
+    text-align: center;
+}
+
+.extendDetails,
+.cardInfo,
+.checkoutInfo {
+    background-color: white;
+    width: 50%;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.extendDetails button {
+    padding: 10px 30px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    background-color: #0097e6;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.extendDetails button:active {
+    transform: scale(0.9);
+}
+
+.formExtend {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.formExtend-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.formExtend-group label {
+    margin-bottom: 10px;
+}
+
+.formExtendInput, .formExtendSelect {
+    padding: 8px;
+    outline: none;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    width: 250px;
+}
+
+.cardInfo, .checkoutInfo {
+    display: none;
+}
+
+.cardInfo h3, .checkoutInfo h3 {
+    text-align: left;
+}
+
+.cardId,
+.cardName,
+.cardValue,
+.cardDate,
+.checkoutCash,
+.checkoutUnit,
+.checkoutAction {
+    color: #333;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.checkoutAction {
+    margin-top: 20px;
+    justify-content: flex-end;
+}
+
+.checkoutAction button {
+    padding: 10px 30px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    background-color: #0097e6;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.checkoutAction button:active {
+    transform: scale(0.9);
+}
+
+#dateFrom,
+#dateTo {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#dateFrom {
+    margin-right: 30px;
+}
+
+@media screen and (min-width: 414px) and (max-width: 767px) {
+    .extend {
+        width: 95%;
+        margin: 0 auto;
+    }
+
+    .formExtend-group input, select {
+        width: 150px;
+    }
+}
+
+@media screen and (min-width: 414px) and (max-width: 1024px) {
+    .extendDetails,
+    .cardInfo,
+    .checkoutInfo {
+        width: 100%;
+    }
+
+    .cardId,
+    .cardName,
+    .cardValue,
+    .cardDate,
+    .checkoutCash,
+    .checkoutUnit,
+    .checkoutAction {
+        width: 100%;
+    }
+
+    .checkoutAction {
+        margin-top: 20px;
+        justify-content: center;
+    }
+}

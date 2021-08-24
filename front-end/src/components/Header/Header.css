@@ -59,6 +59,17 @@
     transform: scale(0.9);
 }
 
+.userLogin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+}
+
+.userLogin img {
+    width: 50px;
+}
+
 @media screen and (min-width: 414px) and (max-width: 767px) {
     .intro {
         display: none;
