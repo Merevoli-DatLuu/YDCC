@@ -14,6 +14,11 @@ class AccountRegisterView(RegisterView):
 class AccountLoginView(LoginView):
     serializer_class = AccountLoginSerializer
 
+    def get_response(self):
+        response = super().get_response()
+        response.data['user']['is_staff'] = Account.objects.get(id = response.data['user']['pk']).is_staff
+        return response
+
 
 class AccountChangePasswordView(PasswordChangeView):
     serializer_class = AccountChangePasswordSerializer
