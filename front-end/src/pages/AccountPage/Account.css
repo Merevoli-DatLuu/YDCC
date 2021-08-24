@@ -1,0 +1,91 @@
+.account {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.accountSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.accountInfo, .accountServices {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+}
+
+.accountInfo span,
+.accountServices span {
+    height: 1px;
+    width: 70%;
+    margin: 0 auto;
+    background-color:lightgray;
+}
+
+.accountInfoGroup, .accountServicesGroup {
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.accountInfoGroup img {
+    margin-right: 10px;
+}
+
+.accountInfoGroup p,
+.accountServicesGroup p {
+    color: #333;
+}
+
+.accountInfoGroup:first-child {
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.accountServicesGroup {
+    align-items: center;
+    cursor: pointer;
+}
+
+.accountServicesGroup i:last-child {
+    color: #333;
+}
+
+.accountServicesGroup i:first-child {
+    font-size: 30px;
+}
+
+@media screen and (min-width: 414px) and (max-width: 767px) {
+    .account {
+        width: 95%;
+        margin: 0 auto;
+    }
+
+    .accountSection {
+        flex-direction: column;
+    }
+
+    .accountInfo, .accountServices {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .accountInfoGroup, .accountServicesGroup {
+        width: 95%;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .accountSection {
+        flex-direction: column;
+    }
+
+    .accountInfo, .accountServices {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}

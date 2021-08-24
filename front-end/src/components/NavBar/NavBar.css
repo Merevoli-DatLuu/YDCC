@@ -26,6 +26,7 @@
     font-weight: 500;
     margin-right: 30px;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 .nav-listItem:not(:first-child):hover {
