@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 from datetime import timedelta
 from django.conf import settings
+import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,10 +31,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",
+#     "http://127.0.0.1:3000",
+# ]
+
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Application definition
 
@@ -51,9 +55,11 @@ INSTALLED_APPS = [
     'dj_rest_auth.registration',
     'allauth.socialaccount',
     'channels',
+    # "djstripe",
     'corsheaders',
     'user.apps.UserConfig',
     'citizen.apps.CitizenConfig',
+    'payment.apps.PaymentConfig',
 
 ]
 
@@ -79,7 +85,7 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
+            'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
         },
@@ -181,6 +187,17 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+
+# STRIPE_LIVE_SECRET_KEY = os.environ.get("STRIPE_LIVE_SECRET_KEY", "sk_test_51JS26KKs4ktnTfQvXNjWlKWzc04hhJz559PEWyPOeBE7J00aBDWh7yP9FHC4GLqMbrAIYIyYhlw1Khd7svodQaEa00pZQcCrdS")
+# STRIPE_TEST_SECRET_KEY = os.environ.get("STRIPE_TEST_SECRET_KEY", "sk_test_51JS26KKs4ktnTfQvXNjWlKWzc04hhJz559PEWyPOeBE7J00aBDWh7yP9FHC4GLqMbrAIYIyYhlw1Khd7svodQaEa00pZQcCrdS")
+# STRIPE_LIVE_MODE = False  # Change to True in production
+# DJSTRIPE_WEBHOOK_SECRET = "whsec_xxx"  # Get it from the section in the Stripe dashboard where you added the webhook endpoint
+# DJSTRIPE_USE_NATIVE_JSONFIELD = True  # We recommend setting to True for new installations
+# DJSTRIPE_FOREIGN_KEY_TO_FIELD = "id"  # Set to `"id"` for all new 2.4+ installations
+
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51JS26KKs4ktnTfQveIZvVtgDG6P7sX57szVRH3ZIVmtKIcSlKG3OADWbtIWJXqxJTZfiBVh2p7b6lGkmmtntULbp00SFW0XneC'
+STRIPE_SECRET_KEY = 'sk_test_51JS26KKs4ktnTfQvXNjWlKWzc04hhJz559PEWyPOeBE7J00aBDWh7yP9FHC4GLqMbrAIYIyYhlw1Khd7svodQaEa00pZQcCrdS'
 
 
 # Internationalization

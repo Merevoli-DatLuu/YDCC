@@ -6,7 +6,7 @@
 ####################################################
 
 
-@access_token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjI5NTQ1MzI2LCJqdGkiOiI2MGIwY2U0ZTM2NDA0MWIyODMzZTljNGJlYTI3YTE3NiIsInVzZXJfaWQiOjJ9.cOtcsC0Kwg5FW4tse34nYVdV78_RTe3AXSo-Wc446ss
+@access_token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjI5Nzg0MjU0LCJqdGkiOiIyZjkxYWJhZDk1NWI0MzZlYjYzZTg1M2Y3YWQ0MGVlYiIsInVzZXJfaWQiOjJ9.vHRQsCbQCe9_jxSTWl0N9sfucWFw2ESqdNvNDLk3DQ0
 
 
 ########################
@@ -29,12 +29,48 @@ content-type: application/json
 }
 
 
+### Test Register
+POST http://127.0.0.1:8000/api/v1/user/register HTTP/1.1
+content-type: application/json
+
+{
+    "username": "230402934",
+    "email": "datluu.1702123@gmail.com",
+    "password1": "dat123!@#",
+    "password2": "dat123!@#",
+    "name": "Lưu Thành Đạt",
+    "date_of_birth": "2000-02-17",
+    "phone": "0776583334"
+}
+
+
 ### User Login
 POST http://127.0.0.1:8000/api/v1/user/login HTTP/1.1
 content-type: application/json
 
 {
     "username": "0129283742",
+    "password": "dat123!@#"
+}
+
+
+### User Login
+POST http://127.0.0.1:8000/api/v1/user/login HTTP/1.1
+content-type: application/json
+
+{
+    "username": "09938282823",
+    "password": "dat123!@#"
+}
+
+
+
+### User Login
+POST http://127.0.0.1:8000/api/v1/user/login HTTP/1.1
+content-type: application/json
+
+{
+    "username": "230402934",
     "password": "dat123!@#"
 }
 
@@ -50,3 +86,30 @@ Authorization: Bearer {{access_token}}
     "new_password2": "dat123456!@#"
 }
 
+
+### User Profile
+GET http://127.0.0.1:8000/api/v1/user/me HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{access_token}}
+
+
+####################
+#    2. Payment    #
+####################
+
+
+### Payment Config
+GET http://127.0.0.1:8000/api/v1/payment/config HTTP/1.1
+content-type: application/json
+
+
+### Payment Create Checkout Session
+POST http://127.0.0.1:8000/api/v1/payment/create-checkout-session HTTP/1.1
+content-type: application/json
+
+{
+    "name": "T-shirt",
+    "quantity": 1,
+    "currency": "usd",
+    "amount": "2000"
+}
