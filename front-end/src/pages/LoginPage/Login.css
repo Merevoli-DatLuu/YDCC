@@ -7,8 +7,8 @@
     justify-content: center;
 }
 
-img {
-    width: 100px;
+.loginPage img {
+    width: 200px;
     margin: 10px 0;
 }
 
@@ -80,6 +80,12 @@ img {
 #loginForm button:active {
     transform: scale(0.9);
 }
+
+#loginNotification {
+    position: absolute;
+    top: 0;
+}
+
 @media screen and (min-width: 414px) and (max-width: 767px) {
     .loginPage {
         width: 90%;

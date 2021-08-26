@@ -101,5 +101,6 @@ export const {userLogout} = authSlice.actions;
 export const selectAuthLogin = (state: RootState) => state.auth.login;
 export const selectAuthRegister = (state: RootState) => state.auth.register;
 export const selectAuthLoading = (state: RootState) => state.auth.loading;
+export const selectAuthError = (state: RootState) => state.auth.error;
 
 export default authSlice.reducer;

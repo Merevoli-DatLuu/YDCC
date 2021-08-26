@@ -18,7 +18,7 @@ class createCheckoutSession(CreateAPIView):
     permission_classes = (AllowAny,)
     
     def create(self, request, *args, **kwargs):
-        domain_url = 'http://localhost:8000/'
+        domain_url = 'http://localhost:3000/'
         stripe.api_key = settings.STRIPE_SECRET_KEY
         try:
             print(request.data)
@@ -32,13 +32,11 @@ class createCheckoutSession(CreateAPIView):
 
             # ?session_id={CHECKOUT_SESSION_ID} means the redirect will have the session ID set as a query param
             checkout_session = stripe.checkout.Session.create(
-                success_url=domain_url + 'success?session_id={CHECKOUT_SESSION_ID}',
-                cancel_url=domain_url + 'cancelled/',
+                success_url=domain_url + 'account?session_id={CHECKOUT_SESSION_ID}',
+                cancel_url=domain_url + 'account',
                 payment_method_types=['card'],
                 mode='payment',
-                line_items=[
-                    request.data
-                ]
+                line_items=[request.data]
             )
             return JsonResponse({'sessionId': checkout_session['id']}, status=status.HTTP_201_CREATED)
         except Exception as e:

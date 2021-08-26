@@ -17,9 +17,10 @@ const NavBar = () => {
                     <li className="nav-listItem">Giới thiệu</li>
                     <li className="nav-listItem">Tin tức</li>
                     <li className="nav-listItem">Giao dịch điện tử</li>
-                    <li className="nav-listItem">Tra cứu thông tin</li>
+                    {/* <Link className="link" to="/search"><li className="nav-listItem">Tra cứu thông tin</li></Link> */}
+                    <li className="nav-listItem"><Link className="link" to="/search">Tra cứu thông tin</Link></li>
                     <li className="nav-listItem">Liên hệ</li>
-                    <Link className="link" to="/chat"><li className="nav-listItem">Hỏi-đáp</li></Link>
+                    <li className="nav-listItem"><Link className="link" to="/chat">Hỏi-đáp</Link></li>
                 </ul>
             </div>
         </nav>
