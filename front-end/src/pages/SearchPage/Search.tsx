@@ -12,8 +12,6 @@ const Search = () => {
         dispatch(searchItem(search));
     };
 
-    console.log(searchResults);
-
     return (
         <div className="search">
             <div className="searchSection">

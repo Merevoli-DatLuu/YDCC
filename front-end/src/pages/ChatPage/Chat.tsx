@@ -4,15 +4,15 @@ import Input from '../../components/Input/Input';
 import Messages from '../../components/Messages/Messages';
 import './Chat.css';
 import io from 'socket.io-client';
-import { useAppSelector } from '../../app/hooks';
+import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { selectAuthLogin } from '../../features/authFeature';
-// import { selectRooms, pushRoom, popRoom } from '../../features/chatbotFeature';
+import { selectRooms, pushRoom } from '../../features/chatbotFeature';
 import {useHistory} from 'react-router-dom';
 
 let socket: any;
 
 const Chat = (location: Location) => {
-    // const dispatch = useAppDispatch();
+    const dispatch = useAppDispatch();
     const [name, setName] = useState<string | string[] | null>("");
     const [room, setRoom] = useState<string | string[] | null>("");
     const [users, setUsers] = useState("");
@@ -21,13 +21,13 @@ const Chat = (location: Location) => {
     const ENDPOINT = "localhost:5000";
     const ROOMS = "ws://localhost:8000/ws/message_queue?token=";
     const userLogin = useAppSelector(selectAuthLogin);
-    // const chatbotRooms = useAppSelector(selectRooms);
+    const chatbotRooms = useAppSelector(selectRooms);
     let user = localStorage.getItem("YDCC_token");
     const history = useHistory();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    useEffect(() => {
-        const queue = async (type: string) => {
+    useEffect( () => {
+        const queue = async () => {
             const auth = user !== null ? JSON.parse(user) : "";
             socket = new WebSocket(ROOMS + auth.access_token);
             // socket.onopen = function open() {
@@ -46,14 +46,23 @@ const Chat = (location: Location) => {
             socket.onopen = function() {
                 alert("[open] Connection established");
                 alert("Sending to server");
-                socket.send(JSON.stringify({
-                    type
-                }));
+                // socket.send(JSON.stringify({
+                //     type
+                // }));
             };
-              
+            
             socket.onmessage = function(event: any) {
+                let obj = JSON.parse(event.data);
+                // let keys = Object.keys(event.data);
+                // console.log(keys);
+                // for(let key of keys) {
+                //     console.log(key);
+                //     // if(key === "username") localStorage.setItem("YDCC_socket", JSON.stringify(event.data.username));
+                // };
+                if(obj.username) localStorage.setItem("YDCC_socket", JSON.stringify(obj.username));
                 alert(`[message] Data received from server: ${event.data}`);
             };
+
         };
 
         // const {name, room} = queryString.parse(location.search);
@@ -66,8 +75,23 @@ const Chat = (location: Location) => {
             let room = "";
             if(auth.user.is_staff === false) {
                 room = auth.user.username;
-                queue("push_queue");
+                queue();
+                let temp = socket;
+                setTimeout(() => {
+                    temp.send(JSON.stringify({
+                        type: "push_queue"
+                    }));
+                }, 1000);
+                // dispatch(pushRoom({username: room}));
                 
+                // if(arrRooms.length > 0) {
+                //     arrRooms.forEach((roomItem) => {
+                //         if(roomItem !== room) arrRooms.push(room);
+                //     });
+                // }else {
+                //     arrRooms.push(room);
+                // };
+
                 // if (socket.readyState === WebSocket.OPEN) {
                     // socket.onopen();
                     // setTimeout(() => {
@@ -82,10 +106,25 @@ const Chat = (location: Location) => {
                 //         "token": auth.access_token
                 //     }
                 // });
-                
-                console.log(socket);
             }else {
-                const res = queue("pop_queue");
+                queue();
+                let temp = socket;
+                setTimeout(() => {
+                    temp.send(JSON.stringify({
+                        type: "pop_queue"
+                    }));
+                }, 1000);
+                let socketLocal = localStorage.getItem("YDCC_socket");
+                let socketRoom = socketLocal !== null ? JSON.parse(socketLocal): "";
+                room = socketRoom;
+                if(room !== "") localStorage.removeItem("YDCC_socket");
+                // chatbotRooms.forEach(chatRoom => console.log(chatRoom));
+                // if(arrRoomsLocal.length > 0) {
+                //     room = arrRoomsLocal[0];
+                //     arrRoomsLocal.splice(0, 1);
+                //     localStorage.setItem("YDCC_rooms", JSON.stringify(arrRoomsLocal));
+                // };
+
                 // socket = io(ROOMS, {
                 //     withCredentials: true,
                 //     query: {
@@ -95,8 +134,8 @@ const Chat = (location: Location) => {
                 // socket.send(JSON.stringify({
                 //     type: "pop_queue"
                 // }));
-                console.log(res);
             };
+
             socket = io(ENDPOINT, {
                 withCredentials: true
             });

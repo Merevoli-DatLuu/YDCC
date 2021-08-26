@@ -14,7 +14,6 @@ export const searchItem = createAsyncThunk(
     'search/searchItem',
     async (keyword: string) => {
         const res = await axios.get("");
-        console.log(res.data);
         return res.data;
     }
 );
