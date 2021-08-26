@@ -1,20 +1,20 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import './ExtendHI.css';
 import { useParams } from 'react-router';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
-import { processToCheckOut, selectCheckout } from '../../features/checkoutFeature';
+import { processToCheckOut } from '../../features/checkoutFeature';
 import { selectAuthLogin } from '../../features/authFeature';
 
 const ExtendHI = () => {
     const history = useHistory();
+    const [month, setMonth] = useState("3");
     const param: {id: string} = useParams();
     const userLogin = useAppSelector(selectAuthLogin);
     let local = localStorage.getItem("YDCC_account");
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const userLocal = local !== null ? JSON.parse(local) : {};
     const dispatch = useAppDispatch();
-    const checkoutInfo = useAppSelector(selectCheckout);
 
     useEffect(() => {
         let user = localStorage.getItem("YDCC_token");
@@ -23,14 +23,14 @@ const ExtendHI = () => {
         };
     }, [history, userLogin]);
 
-    const checkout = () => {
+    const checkout = async () => {
         const checkoutContent = {
             "username": param.id,
             "name": userLocal.name,
             "date_of_birth": userLocal.date_of_birth,
             "email": userLocal.email,
             "phone": userLocal.phone,
-            "cash": 500000
+            "cash": 100000 * Number(month)
         };
         dispatch(processToCheckOut(checkoutContent));
     };
@@ -57,7 +57,7 @@ const ExtendHI = () => {
                     </div>
                     <div className="formExtend-group">
                         <label>Số tháng gia hạn</label>
-                        <select className="formExtendSelect">
+                        <select className="formExtendSelect" value={month} onChange={e => setMonth(e.target.value)}>
                             <option value="3">3 tháng</option>
                             <option value="6">6 tháng</option>
                             <option value="9">9 tháng</option>
@@ -97,7 +97,7 @@ const ExtendHI = () => {
                 <h3>Thông tin thanh toán</h3>
                 <div className="checkoutCash">
                     <p>Số tiền nộp BHYT:</p>
-                    <p>500.000 VNĐ</p>
+                    <p>{100000 * Number(month)} VNĐ</p>
                 </div>
                 <div className="checkoutUnit">
                     <p>Cơ quan cấp thẻ BHYT:</p>

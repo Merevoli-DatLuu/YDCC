@@ -4,6 +4,7 @@ import ExtendHI from "./pages/ExtendHealthInsurancePage/ExtendHI";
 import Home from "./pages/HomePage/Home";
 import Login from "./pages/LoginPage/Login";
 import Register from "./pages/RegisterPage/Register";
+import Search from "./pages/SearchPage/Search";
 
 const routes: Array<{exact: boolean, path: string, main: any}> = [
     {
@@ -25,6 +26,11 @@ const routes: Array<{exact: boolean, path: string, main: any}> = [
         exact: true,
         path: '/chat',
         main: () => Chat
+    },
+    {
+        exact: true,
+        path: '/search',
+        main: () => Search
     },
     {
         exact: true,

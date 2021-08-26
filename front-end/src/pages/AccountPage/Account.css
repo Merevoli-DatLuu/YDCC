@@ -33,6 +33,7 @@
 }
 
 .accountInfoGroup img {
+    width: 100px;
     margin-right: 10px;
 }
 
@@ -57,6 +58,11 @@
 
 .accountServicesGroup i:first-child {
     font-size: 30px;
+}
+
+#notification {
+    position: absolute;
+    top: 0;
 }
 
 @media screen and (min-width: 414px) and (max-width: 767px) {

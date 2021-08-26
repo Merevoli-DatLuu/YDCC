@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import './Register.css';
-import logo from '../../assets/bhxh-logo.jpg';
+import logo from '../../assets/logo_transparent.png';
 import { useForm } from "react-hook-form";
 import Errors from '../../components/Errors/Errors';
 import { Link, useHistory } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import {authRegister, selectAuthRegister, selectAuthLoading} from '../../features/authFeature';
+import {authRegister, selectAuthRegister} from '../../features/authFeature';
 
 const Register = () => {
     const [phone, setPhone] = useState("");
@@ -18,7 +18,7 @@ const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const dispatch = useAppDispatch();
     const userRegister = useAppSelector(selectAuthRegister);
-    const loading = useAppSelector(selectAuthLoading);
+    // const loading = useAppSelector(selectAuthLoading);
     const history = useHistory();
 
     useEffect(() => {
@@ -26,11 +26,11 @@ const Register = () => {
             // eslint-disable-next-line no-restricted-globals
             let verifyEmail = confirm("Please verify your email");
             if(verifyEmail === true) {
-                window.open("https://mail.google.com/", "_blank");
+                window.open(`https://mail.google.com/mail/u/0/#search/from:${email}`, "_blank");
                 history.push("/login");
             };
         }
-    }, [userRegister, history]);
+    }, [userRegister, history, email]);
 
     const onSubmit = (registerFormValue: {idBHYT: string, email: string, password: string, confirmPassword: string, name: string, dateOfBirth: string, phone: string}) => {
         if(password === confirmPassword) {

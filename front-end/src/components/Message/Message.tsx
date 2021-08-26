@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import './Message.css';
-import * as Scroll from 'react-scroll';
+// import * as Scroll from 'react-scroll';
 
 const Message = (props: {message: {user: string, text: string}, name: string | string[] | null}) => {
     // let scroll = Scroll.animateScroll;
