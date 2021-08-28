@@ -28,14 +28,14 @@ const News = () => {
             <div className="newsCategories">
                 <h3>Danh mục tin tức</h3>
                 <ul className="categoryList">
-                    <li className="categoryItem"><i className="fas fa-chevron-right"></i><Link className="link" to="/news?category=technology">Công nghệ</Link></li>
-                    <li className="categoryItem"><i className="fas fa-chevron-right"></i><Link className="link" to="/news?category=health">Sức khỏe</Link></li>
-                    <li className="categoryItem"><i className="fas fa-chevron-right"></i><Link className="link" to="/news?category=sports">Thể thao</Link></li>
-                    <li className="categoryItem"><i className="fas fa-chevron-right"></i><Link className="link" to="/news?category=music">Âm nhạc</Link></li>
-                    <li className="categoryItem"><i className="fas fa-chevron-right"></i><Link className="link" to="/news?category=business">Kinh doanh</Link></li>
-                    <li className="categoryItem"><i className="fas fa-chevron-right"></i><Link className="link" to="/news?category=science">Khoa học</Link></li>
-                    <li className="categoryItem"><i className="fas fa-chevron-right"></i><Link className="link" to="/news?category=entertainment">Giải trí</Link></li>
-                    <li className="categoryItem"><i className="fas fa-chevron-right"></i><Link className="link" to="/news?category=politics">Chính trị</Link></li>
+                    <li className="categoryItem"><i className="fas fa-chevron-right"></i><Link className="categoryLink" to="/news?category=technology">Công nghệ</Link></li>
+                    <li className="categoryItem"><i className="fas fa-chevron-right"></i><Link className="categoryLink" to="/news?category=health">Sức khỏe</Link></li>
+                    <li className="categoryItem"><i className="fas fa-chevron-right"></i><Link className="categoryLink" to="/news?category=sports">Thể thao</Link></li>
+                    <li className="categoryItem"><i className="fas fa-chevron-right"></i><Link className="categoryLink" to="/news?category=music">Âm nhạc</Link></li>
+                    <li className="categoryItem"><i className="fas fa-chevron-right"></i><Link className="categoryLink" to="/news?category=business">Kinh doanh</Link></li>
+                    <li className="categoryItem"><i className="fas fa-chevron-right"></i><Link className="categoryLink" to="/news?category=science">Khoa học</Link></li>
+                    <li className="categoryItem"><i className="fas fa-chevron-right"></i><Link className="categoryLink" to="/news?category=entertainment">Giải trí</Link></li>
+                    <li className="categoryItem"><i className="fas fa-chevron-right"></i><Link className="categoryLink" to="/news?category=politics">Chính trị</Link></li>
                 </ul>
             </div>
         </div>

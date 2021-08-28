@@ -4,23 +4,23 @@ import { useAppSelector } from '../../app/hooks';
 import { selectUser } from '../../features/accountFeature';
 
 export interface Hospital {
-    "id": 0,
-    "patient_name": "",
-    "hospital_name": "",
-    "hospital_referral_name": "",
-    "symptom": "",
-    "diagnose": "",
-    "treatment": "",
-    "doctor": "",
-    "note": "",
-    "start_date": "",
-    "end_date": "",
+    "id": number,
+    "patient_name": string,
+    "hospital_name": string,
+    "hospital_referral_name": string,
+    "symptom": string,
+    "diagnose": string,
+    "treatment": string,
+    "doctor": string,
+    "note": string,
+    "start_date": string,
+    "end_date": string,
     "re_examination": null,
     "organ_donor": null,
-    "emergency": false,
-    "appropriate_levels": false,
-    "health_insurance_id": "",
-    "hospital_id": 0,
+    "emergency": boolean,
+    "appropriate_levels": boolean,
+    "health_insurance_id": string,
+    "hospital_id": number,
     "referral": null
 };
 
@@ -39,7 +39,7 @@ const RecordItem = (props: {hospital: Hospital}) => {
             <td>{props.hospital.diagnose}</td>
             <td>{props.hospital.treatment}</td>
             <td>{props.hospital.doctor}</td>
-            <td><Link className="link" to={`/account/${userLocal.username}/records?hospitalID=${hospital}`}>{props.hospital.hospital_name}</Link></td>
+            <td><Link className="hospitalName" to={`/account/${userLocal.username}/records?hospitalID=${hospital}`}>{props.hospital.hospital_name}</Link></td>
         </tr>
         
         // <div className="recordItem">

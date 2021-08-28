@@ -93,14 +93,16 @@ const Account = () => {
                 <div className="accountSection">
                     <div className="accountInfo">
                         <div className="accountInfoGroup">
-                            {
+                            <img src={userBHYT.picture || profile} alt="avatar" />    
+                            {/* <img src="https://toplist.vn/images/800px/dino-studio-anh-vien-cho-be-va-gia-dinh-317623.jpg" alt="profile" /> */}
+                            {/* {
                                 user.picture !== null ?
-                                <img src={userBHYT[0].picture} alt="avatar" />
+                                <img src={userBHYT.picture} alt="avatar" />
                                 : <img src={profile} alt="avatar" />
-                            }
+                            } */}
                             <div>
-                                <p><strong>{user.name || userLocal.name}</strong></p>
-                                <p>Mã số BHYT: {userBHYT[0].health_insurance_id || userLocal.username}</p>
+                                <p><strong>{userBHYT.name || userLocal.name}</strong></p>
+                                <p>Mã số BHYT: {userBHYT.health_insurance_id || userLocal.username}</p>
                             </div>
                         </div>
                         <span></span>
@@ -121,23 +123,19 @@ const Account = () => {
                         <span></span>
                         <div className="accountInfoGroup">
                             <p>Địa chỉ</p>
-                            <p>{userBHYT[0].address}</p>
+                            <p id="address">{userBHYT.address}</p>
                         </div>
                     </div>
                     <div className="accountBenefit">
-                        <h3>Thông tin phúc lợi</h3>
+                        <h3><strong>Thông tin phúc lợi</strong></h3>
                         {
-                            userBenefit.length > 0 ?
-                            userBenefit.map((benefit, index) => {
-                                return (
-                                    <div key={index}>
-                                        <p>Mức hưởng 1: {benefit.level_1}</p>
-                                        <p>Mức hưởng 2: {benefit.level_2}</p>
-                                        <p>Mức hưởng 3: {benefit.level_3}</p>
-                                        <p>Mức hưởng 4: {benefit.level_4}</p>
-                                    </div>
-                                )
-                            }): null
+                            userBenefit ?
+                            <div>
+                                <p><i className="fas fa-chevron-right"></i><span>Mức hưởng 1:</span> {userBenefit.level_1}</p>
+                                <p><i className="fas fa-chevron-right"></i><span>Mức hưởng 2:</span> {userBenefit.level_2}</p>
+                                <p><i className="fas fa-chevron-right"></i><span>Mức hưởng 3:</span> {userBenefit.level_3}</p>
+                                <p><i className="fas fa-chevron-right"></i><span>Mức hưởng 4:</span> {userBenefit.level_4}</p>
+                            </div>: null
                         }
                     </div>
                 </div>

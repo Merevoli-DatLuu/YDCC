@@ -1,14 +1,23 @@
+import { useEffect } from 'react';
 import logo from '../../assets/logo.png';
 import './Header.css';
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import profile from '../../assets/profile.png';
 import { userLogout, selectAuthLogin } from '../../features/authFeature';
+import { selectBHYT, getBHYTInfo } from '../../features/accountFeature';
 
 const Header = () => {
     const dispatch = useAppDispatch();
     const userLogin = useAppSelector(selectAuthLogin);
     let user = localStorage.getItem("YDCC_token");
+    const auth = user !== null ? JSON.parse(user) : "";
+    const userBHYT = useAppSelector(selectBHYT);
+
+    useEffect(() => {
+        if(auth !== "") dispatch(getBHYTInfo(auth.access_token));   
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [user]);
 
     const logout = () => {
         const login = {
@@ -44,7 +53,7 @@ const Header = () => {
                         (user !== null || userLogin.access_token !== "") ?
                         <div className="userLogin">
                             <Link to="/account">
-                                <img src={profile} alt="profile" />
+                                <img src={userBHYT.picture || profile} alt="profile" />
                             </Link>
                             <button type="button" onClick={logout}>Đăng xuất</button>
                         </div> :

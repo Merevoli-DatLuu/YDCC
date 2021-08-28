@@ -6,6 +6,7 @@ import { selectAuthLogin } from '../../features/authFeature';
 import RecordItem from '../../components/RecordItem/RecordItem';
 import { selectHospitals, getHospitals, getHospital, selectHospital} from '../../features/heathRecordsFeature';
 import { useLocation } from 'react-router';
+import hospitalImage from '../../assets/hospital.jpg';
 
 const HealthRecords = () => {
     const dispatch = useAppDispatch();
@@ -51,21 +52,22 @@ const HealthRecords = () => {
                     </tbody>
                 </table>
             </div>
-            <div className="healthRecordsDetails">
-                <h4>THÔNG TIN CHI TIẾT BỆNH VIỆN</h4>
-                {
-                    hospital.id !== 0 ?
+            {
+                hospital.id !== 0 ?
+                <div className="healthRecordsDetails">
+                    {/* <h4>THÔNG TIN CHI TIẾT BỆNH VIỆN</h4> */}
+                    <img src={hospitalImage} alt="hospital" />
                     <ul className="detailsList">
-                        <li className="deatilsItem">Tên: {hospital.name}</li>
-                        <li className="deatilsItem">Địa chỉ: {hospital.address}</li>
-                        <li className="deatilsItem">Giấy phép hoạt động: {hospital.license_id}</li>
-                        <li className="deatilsItem">Trạng thái: {hospital.status}</li>
-                        <li className="deatilsItem">Loại bệnh viện: {hospital.type}</li>
-                        <li className="deatilsItem">Chứng chỉ: {hospital.head_certificate}</li>
+                        <li className="detailsItem">Tên: <span>{hospital.name}</span></li>
+                        <li className="detailsItem">Địa chỉ: <span>{hospital.address}</span></li>
+                        <li className="detailsItem">Giấy phép hoạt động: <span>{hospital.license_id}</span></li>
+                        <li className="detailsItem">Trạng thái: <span>{hospital.status}</span></li>
+                        <li className="detailsItem">Loại bệnh viện: <span>{hospital.type}</span></li>
+                        <li className="detailsItem">Chứng chỉ: <span>{hospital.head_certificate}</span></li>
                     </ul>
-                    : null
-                }
-            </div>
+                </div> : null
+            }
+            
         </div>
     )
 }

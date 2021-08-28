@@ -8,6 +8,7 @@
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 20px;
+    background-color: whitesmoke;
 }
 
 .accountInfo,
@@ -29,7 +30,17 @@
     padding: 10px;
 }
 
+.accountBenefit span {
+    font-weight: 700;
+    margin: 0 5px;
+}
+
 .accountBenefit p {
+    line-height: 30px;
+}
+
+.accountBenefit p,
+.accountBenefit h3 {
     color: #333;
 }
 
@@ -57,12 +68,21 @@
 
 .accountInfoGroup img {
     width: 100px;
-    margin-right: 10px;
+    margin: 10px 10px 0 0;
+    /* border-radius: 40%; */
+}
+
+.accountInfoGroup strong {
+    font-size: 22px;
 }
 
 .accountInfoGroup p,
 .accountServicesGroup p {
     color: #333;
+}
+
+#address {
+    width: 50%;
 }
 
 .accountInfoGroup:first-child {
@@ -107,6 +127,7 @@
 @media screen and (min-width: 414px) and (max-width: 1024px) {
     .accountSection {
         flex-direction: column;
+        background-color: white;
     }
 
     .accountInfo {
