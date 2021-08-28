@@ -5,6 +5,8 @@ import { useParams } from 'react-router';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { processToCheckOut } from '../../features/checkoutFeature';
 import { selectAuthLogin } from '../../features/authFeature';
+import NavBar from '../../components/NavBar/NavBar';
+import Footer from '../../components/Footer/Footer';
 
 const ExtendHI = () => {
     const history = useHistory();

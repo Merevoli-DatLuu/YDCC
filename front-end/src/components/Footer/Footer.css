@@ -27,6 +27,13 @@
     flex-direction: column;
 }
 
+.members h2, 
+.units h2, 
+.contactInfo h2,
+.teamName h2 {   
+    color: #0097e6;
+}
+
 .members h4, 
 .units h4, 
 .contactInfo h4 {

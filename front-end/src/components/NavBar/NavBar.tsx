@@ -1,7 +1,12 @@
 import './NavBar.css';
 import { Link } from 'react-router-dom';
+import { useAppSelector } from '../../app/hooks';
+import { selectAuthLogin } from '../../features/authFeature';
 
 const NavBar = () => {
+    const userLogin = useAppSelector(selectAuthLogin);
+    let user = localStorage.getItem("YDCC_token");
+
     return (
         <nav className="navbar">
             <div className="navbar-container">
@@ -14,12 +19,28 @@ const NavBar = () => {
                             <i className="fas fa-home"></i>
                         </li>
                     </Link>
-                    <li className="nav-listItem">Giới thiệu</li>
-                    <li className="nav-listItem">Tin tức</li>
-                    <li className="nav-listItem">Giao dịch điện tử</li>
-                    {/* <Link className="link" to="/search"><li className="nav-listItem">Tra cứu thông tin</li></Link> */}
-                    <li className="nav-listItem"><Link className="link" to="/search">Tra cứu thông tin</Link></li>
-                    <li className="nav-listItem">Liên hệ</li>
+                    {
+                        (user === null && userLogin.access_token === "") ?
+                        (<>
+                            <li className="nav-listItem">Giới thiệu</li>
+                            <li className="nav-listItem"><Link className="link" to="/news">Tin tức</Link></li>
+                            <li className="nav-listItem"><Link className="link" to="/suggestions">Gợi ý nơi khám</Link></li>
+                            {/* <li className="nav-listItem"><Link className="link" to="/search">Tra cứu thông tin</Link></li> */}
+                            <li className="nav-listItem">Liên hệ</li>
+                        </>):
+                        (
+                            ((user !== null || userLogin.access_token !== "") && userLogin.user.is_staff === true) ?
+                            <></> :
+                            <>
+                                <li className="nav-listItem">Giới thiệu</li>
+                                <li className="nav-listItem"><Link className="link" to="/news">Tin tức</Link></li>
+                                <li className="nav-listItem"><Link className="link" to="/suggestions">Gợi ý nơi khám</Link></li>
+                                {/* <li className="nav-listItem"><Link className="link" to="/search">Tra cứu thông tin</Link></li> */}
+                                <li className="nav-listItem">Liên hệ</li>
+                            </>
+                        )
+                    }
+                    
                     <li className="nav-listItem"><Link className="link" to="/chat">Hỏi-đáp</Link></li>
                 </ul>
             </div>

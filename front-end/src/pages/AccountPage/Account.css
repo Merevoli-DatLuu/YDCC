@@ -7,24 +7,47 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    margin-bottom: 20px;
 }
 
-.accountInfo, .accountServices {
+.accountInfo,
+.accountBenefit {
     width: 50%;
     display: flex;
     flex-direction: column;
     background-color: whitesmoke;
 }
 
-.accountInfo span,
-.accountServices span {
+.accountServices {
+    width: 100%;
+    display: flex;
+    margin-bottom: 20px;
+    background-color: whitesmoke;
+}
+
+.accountBenefit {
+    padding: 10px;
+}
+
+.accountBenefit p {
+    color: #333;
+}
+
+.accountInfo span {
     height: 1px;
     width: 70%;
     margin: 0 auto;
     background-color:lightgray;
 }
 
-.accountInfoGroup, .accountServicesGroup {
+.accountServices span {
+    height: 100px;
+    width: 1px;
+    margin: 0 auto;
+    background-color:lightgray;
+}
+
+.accountInfoGroup {
     width: 70%;
     margin: 0 auto;
     display: flex;
@@ -48,8 +71,11 @@
 }
 
 .accountServicesGroup {
+    width: 400px;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
     align-items: center;
-    cursor: pointer;
 }
 
 .accountServicesGroup i:last-child {
@@ -65,33 +91,50 @@
     top: 0;
 }
 
+
+
 @media screen and (min-width: 414px) and (max-width: 767px) {
     .account {
         width: 95%;
         margin: 0 auto;
     }
 
-    .accountSection {
-        flex-direction: column;
-    }
-
-    .accountInfo, .accountServices {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-
-    .accountInfoGroup, .accountServicesGroup {
+    .accountInfoGroup {
         width: 95%;
     }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1024px) {
+@media screen and (min-width: 414px) and (max-width: 1024px) {
     .accountSection {
         flex-direction: column;
     }
 
-    .accountInfo, .accountServices {
+    .accountInfo {
         width: 100%;
         margin-bottom: 20px;
+    }
+
+    .accountServices {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .accountServices span {
+        height: 1px;
+        width: 70%;
+        margin: 0 auto;
+        background-color:lightgray;
+    }
+
+    .accountServicesGroup {
+        width: 70%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+
+    .accountBenefit {
+        width: 100%;
     }
 }

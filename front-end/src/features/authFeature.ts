@@ -11,7 +11,8 @@ const initialState = {
         refresh_token: "",
         user: {
             pk: 0,
-            username: ""
+            username: "",
+            is_staff: false
         },
     },
     // userRegister: {
