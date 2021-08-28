@@ -1,22 +1,21 @@
 import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { searchItem, selectSearchResult } from '../../features/searchFeature';
 import './Search.css';
 
 const Search = () => {
     const dispatch = useAppDispatch();
     const [search, setSearch] = useState("");
-    const searchResults = useAppSelector(selectSearchResult);
+    // const searchResults = useAppSelector(selectSearchResult);
 
-    const searchInfo = () => {
-        dispatch(searchItem(search));
-    };
+    // const searchInfo = () => {
+    //     dispatch(searchItem(search));
+    // };
 
     return (
         <div className="search">
             <div className="searchSection">
                 <input type="text" placeholder="Nhập từ khóa tìm kiếm" value={search} onChange={e => setSearch(e.target.value)} />
-                <button onClick={searchInfo}><i className="fas fa-search"></i></button>
+                {/* <button onClick={searchInfo}><i className="fas fa-search"></i></button> */}
             </div>
             <div className="resultSection">
                 <table>

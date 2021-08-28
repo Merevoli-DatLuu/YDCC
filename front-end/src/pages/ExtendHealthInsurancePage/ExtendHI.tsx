@@ -5,11 +5,11 @@ import { useParams } from 'react-router';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { processToCheckOut } from '../../features/checkoutFeature';
 import { selectAuthLogin } from '../../features/authFeature';
-import NavBar from '../../components/NavBar/NavBar';
-import Footer from '../../components/Footer/Footer';
+import { selectBHYT } from '../../features/accountFeature';
 
 const ExtendHI = () => {
     const history = useHistory();
+    const userBHYT = useAppSelector(selectBHYT);
     const [month, setMonth] = useState("3");
     const param: {id: string} = useParams();
     const userLogin = useAppSelector(selectAuthLogin);
@@ -50,7 +50,7 @@ const ExtendHI = () => {
 
     return (
         <div className="extend">
-            <h1>Gia hạn thẻ BHYT theo hộ gia đình</h1>
+            <h1>Gia hạn thẻ BHYT</h1>
             <div className="extendDetails">
                 <form className="formExtend">
                     <div className="formExtend-group">
@@ -78,7 +78,7 @@ const ExtendHI = () => {
                 </div>
                 <div className="cardName">
                     <p>Họ và tên:</p>
-                    <p>{userLocal.name}</p>
+                    <p>{userBHYT.name}</p>
                 </div>
                 <div className="cardValue">
                     <p>Giá trị thẻ BHYT:</p>

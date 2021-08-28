@@ -6,19 +6,23 @@ from .serializers import HealthInsuranceSerializer, HealthRecordSerializer, Hosp
 from citizen.models import Citizen
 
 
-class HealthInsuranceView(ListAPIView):
+class HealthInsuranceView(RetrieveAPIView):
     serializer_class = HealthInsuranceSerializer
     queryset = HealthInsurance.objects.all()
 
     def get_object(self):
-        identity_id = Citizen.objects.get(identity_id = self.request.user.id).id
+        identity_id = Citizen.objects.get(identity_id = self.request.user.username)
         return get_object_or_404(HealthInsurance, identity_id=identity_id)
 
 
-class BenefitInformationView(ListAPIView):
+class BenefitInformationView(RetrieveAPIView):
     serializer_class = BenefitInformationSerializer
     queryset = HealthInsurance.objects.all()
-    
+
+    def get_object(self):
+        citizen_id = Citizen.objects.get(identity_id=self.request.user.username)
+        return HealthInsurance.objects.get(identity_id=citizen_id)
+
     def get_serializer_context(self):
         context = super(BenefitInformationView, self).get_serializer_context()
         citizen_id = Citizen.objects.get(identity_id=self.request.user.username)

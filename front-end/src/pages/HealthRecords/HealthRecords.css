@@ -18,7 +18,6 @@
 
 .healthRecordsDetails {
     width: 100%;
-    padding: 10px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -26,17 +25,29 @@
     background-color: whitesmoke;
 }
 
-.healthRecordsDetails h4 {
-    margin: 0 auto;
+.healthRecordsDetails img {
+    width: 40%;
+    height: 300px;
 }
+
+/* .healthRecordsDetails h4 {
+    margin: 0 auto;
+} */
 
 .detailsList {
     list-style: none;
 }
 
-.deatilsItem {
+.detailsItem {
     font-size: 16px;
+    font-weight: 700;
     margin-bottom: 10px;
+    color: #333;
+}
+
+.detailsItem span {
+    font-weight: normal;
+    margin-left: 10px;
 }
 
 .healthRecordsContainer table {
@@ -48,6 +59,10 @@
 .healthRecordsContainer table tbody tr td{
     text-align: left;
     padding: 8px;
+}
+
+.healthRecordsContainer table tbody tr td{
+    color: #333;
 }
 
 @media screen and (min-width: 414px) and (max-width: 1024px) {

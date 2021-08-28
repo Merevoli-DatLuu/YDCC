@@ -12,6 +12,12 @@
     color: #333;
 } 
 
+.hospitalName {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
 @media screen and (min-width: 768px) and (max-width: 1024px) {
     .recordItem {
         width: 100%;

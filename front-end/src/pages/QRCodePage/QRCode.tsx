@@ -25,10 +25,10 @@ const QRCode = () => {
     return (
         <div className="QRCode">
             <div className="QRContainer">
-                <img id="QR" src={userBHYT[0].qr_code} alt="QRCode" />
-                <p>{userBHYT[0].health_insurance_id}</p>
-                <p>{userBHYT[0].name}</p>
-                <img src={userBHYT[0].picture || profile} alt="avatar" />
+                <img id="QR" src={userBHYT.qr_code} alt="QRCode" />
+                <p>{userBHYT.health_insurance_id}</p>
+                <p>{userBHYT.name}</p>
+                <img src={userBHYT.picture || profile} alt="avatar" />
             </div>
         </div>
     )
