@@ -4,19 +4,36 @@
 }
 
 .suggestionsSection {
-    width: 50%;
+    width: 100%;
     margin: 0 auto;
     margin-bottom: 40px;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: flex-end;
+}
+
+.suggestionsGroup {
+    margin-left: 40px;
+}
+
+.suggestionsGroup label {
+    margin-left: 8px;
+    color: #333;
+    font-weight: 700;
 }
 
 .suggestionsGroup input {
     cursor: pointer;
 }
 
-.suggestionsResults table {
+.suggestionsResults {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+/* .suggestionsResults table {
     background-color: whitesmoke;
     width: 100%;
 }
@@ -25,7 +42,8 @@
 .suggestionsResults table tbody tr td{
     text-align: left;
     padding: 8px;
-}
+    color: #333;
+} */
 
 @media screen and (min-width: 414px) and (max-width: 767px) {
     .suggestions {
@@ -40,5 +58,9 @@
 
     .suggestionsSection {
         width: 100%;
+    }
+
+    .suggestionsResults {
+        flex-direction: column;
     }
 }

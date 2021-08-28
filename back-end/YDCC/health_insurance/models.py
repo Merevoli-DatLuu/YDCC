@@ -71,8 +71,14 @@ class HealthInsurance(models.Model):
     qr_code                 = models.ImageField(upload_to='static/qrcode', blank=True, null=True)
 
     def save(self, *args, **kwargs):
-        qrcode_img = qrcode.make(self.health_insurance_id)
-        canvas = Image.new('RGB', (350, 350), 'white')
+        qrcode_img = qrcode.make(
+            self.health_insurance_id + self.identity_id.identity_id, 
+            version=4,
+            error_correction=qrcode.constants.ERROR_CORRECT_L,
+            box_size=10,
+            border=4
+        )
+        canvas = Image.new('RGB', (400, 400), 'white')
         canvas.paste(qrcode_img)
         fname = f'qr_code-{self.id}.png'
         buffer = BytesIO()

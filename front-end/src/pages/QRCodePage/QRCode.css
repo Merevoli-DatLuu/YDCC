@@ -1,5 +1,5 @@
 .QRCode {
-    width: 80%;
+    width: 50%;
     margin: 0 auto;
 }
 
@@ -10,18 +10,42 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    box-shadow: 2px 2px 10px 2px lightgray;
+    border-radius: 10px;
 }
 
 .QRContainer img {
     width: 150px;
     height: 150px;
+    margin-bottom: 50px;
 }
 
 .QRContainer p:first-child {
     margin-bottom: 20px;
 }
 
+.QRContainer p {
+    font-family: "Calibri", 'Trebuchet MS', "sans-serifi";
+    font-weight: bold;
+    font-size: 20px;
+    color: #333;
+}
+
 #QR {
+    margin-top: 40px;
     width: 200px;
     height: 200px;
+    margin-bottom: 0;
+}
+
+@media screen and (min-width: 414px) and (max-width: 767px) {
+    .QRCode, .QRContainer {
+        width: 90%;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .QRCode, .QRContainer {
+        width: 70%;
+    }
 }

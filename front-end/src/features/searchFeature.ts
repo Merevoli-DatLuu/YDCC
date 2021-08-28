@@ -3,39 +3,55 @@ import { RootState } from '../app/store';
 import axios from 'axios';
 
 const initialState = {
-    searchResults: [
-        
-    ],
+    suggestionResults: [{
+        "id": 0,
+        "percent": 0,
+        "distance": "",
+        "name": "",
+        "address": "",
+        "license_id": "",
+        "license_date": "",
+        "status": "",
+        "type": "",
+        "head_certificate": "",
+        "central_line": false,
+        "x_pos": 0,
+        "y_pos": 0
+    }],
     loading: false,
     error: false
 };
 
-export const searchItem = createAsyncThunk(
+export const getSuggestions = createAsyncThunk(
     'search/searchItem',
-    async (keyword: string) => {
-        const res = await axios.get("");
+    async (access_token: string) => {
+        const res = await axios.get("http://127.0.0.1:8000/api/v1/health_insurance/suggest_hospital/", {
+            headers: {
+                Authorization: 'Bearer ' + access_token
+            }
+        });
         return res.data;
     }
 );
 
-export const searchSlice = createSlice({
+export const suggestionSlice = createSlice({
     name: 'search',
     initialState,
     reducers: {},
     extraReducers: builder => {
         builder
-            .addCase(searchItem.pending, (state) => {
+            .addCase(getSuggestions.pending, (state) => {
                 return {...state, loading: true};
             })
-            .addCase(searchItem.fulfilled, (state, action) => {
-                return {...state, loading: false, searchResults: action.payload};
+            .addCase(getSuggestions.fulfilled, (state, action) => {
+                return {...state, loading: false, suggestionResults: action.payload};
             })
-            .addCase(searchItem.rejected, (state) => {
+            .addCase(getSuggestions.rejected, (state) => {
                 return {...state, loading: false, error: true};
             })
     }
 });
 
-export const selectSearchResult = (state: RootState) => state.search.searchResults;
+export const selectSuggestion = (state: RootState) => state.search.suggestionResults;
 
-export default searchSlice.reducer;
+export default suggestionSlice.reducer;

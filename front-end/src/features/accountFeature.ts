@@ -14,7 +14,7 @@ const initialState = {
         "date_joined": "",
         "last_login": ""
     },
-    BHYT: [{
+    BHYT: {
         "id": 0,
         "name": "",
         "date_of_birth": "",
@@ -29,13 +29,13 @@ const initialState = {
         "card_type": "",
         "hospital_id": 0,
         "hospital_name": ""
-    }],
-    benefit: [{
+    },
+    benefit: {
         "level_1": "",
         "level_2": "",
         "level_3": "",
         "level_4": ""
-    }],
+    },
     loading: false,
     error: false
 };
@@ -53,7 +53,7 @@ export const getInfo = createAsyncThunk(
 export const getBHYTInfo = createAsyncThunk(
     'account/getBHYTInfo',
     async (access_token: string) => {
-        const res = await axios.get("http://127.0.0.1:8000/api/v1/health_insurance/get_01/", {headers: {
+        const res = await axios.get("http://127.0.0.1:8000/api/v1/health_insurance/health_insurance/", {headers: {
             Authorization: 'Bearer ' + access_token
         }});
         return res.data;
@@ -90,7 +90,6 @@ const accountSlice = createSlice({
                 return {...state, loading: true};
             })
             .addCase(getBHYTInfo.fulfilled, (state, action) => {
-                localStorage.setItem("YDCC_account", JSON.stringify(action.payload));
                 return {...state, loading: false, BHYT: action.payload};
             })
             .addCase(getBHYTInfo.rejected, (state) => {
@@ -100,7 +99,6 @@ const accountSlice = createSlice({
                 return {...state, loading: true};
             })
             .addCase(getBenefit.fulfilled, (state, action) => {
-                localStorage.setItem("YDCC_account", JSON.stringify(action.payload));
                 return {...state, loading: false, benefit: action.payload};
             })
             .addCase(getBenefit.rejected, (state) => {
