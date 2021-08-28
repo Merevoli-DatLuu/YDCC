@@ -83,7 +83,7 @@ class SuggestHospitalDistanceListView(ListAPIView):
     queryset = Hospital.objects.all()
     
     def get_serializer_context(self):
-        context = super(SuggestHospitalListView, self).get_serializer_context()
+        context = super(SuggestHospitalDistanceListView, self).get_serializer_context()
         citizen_id = Citizen.objects.get(identity_id=self.request.user.username)
         health_insurance_id = HealthInsurance.objects.get(identity_id=citizen_id)
         card_type = health_insurance_id.card_type
