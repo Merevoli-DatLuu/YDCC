@@ -3,6 +3,10 @@ from rest_framework import serializers
 
 from .models import HealthInsurance, HealthInsuranceCardType, HealthRecord, Hospital, HospitalStatus
 from citizen.models import Citizen
+from .services import get_position_distance
+import datetime
+import pytz
+
 
 class HealthInsuranceSerializer(serializers.ModelSerializer):
     name = serializers.SerializerMethodField()
@@ -87,3 +91,62 @@ class BenefitInformationSerializer(serializers.Serializer):
     def get_level_4(self, obj):
         percent = self.context.get("percent")
         return f"Trong trường hợp điều trị nội trú trái tuyến tại các cơ sở khám chữa bệnh tuyến trung ương sẽ được hưởng {int(percent*40/100)}% (TH trên thẻ có mã nơi sinh sống là K1, K2, K3 sẽ được {percent}%)"
+
+
+class SuggestHospitalSerializer(serializers.ModelSerializer):
+    percent = serializers.SerializerMethodField()
+    distance = serializers.SerializerMethodField()
+    
+    class Meta:
+        model = Hospital
+        fields = '__all__'
+
+        
+    def get_percent(self, obj):
+        percent = self.context.get('percent')
+        hospital = self.context.get('hospital')
+        
+        d1 = hospital.address.split(',')
+        d2 = obj.address.split(',')
+        city1 = d1[-1].strip().lower()
+        city2 = d2[-1].strip().lower()
+        district1 = d1[-2].strip().lower()
+        district2 = d2[-2].strip().lower()
+        hospitals = HealthRecord.objects.filter(health_insurance_id = self.context.get('my_health_insurance'))
+        
+        level = 1
+        
+        if city1 == city2:
+            if district1 == district2:
+                level = 1
+            else:
+                level = 2
+        else:
+            level = 3
+            
+        if obj.central_line == True:
+            level = 4
+        else:
+            p1 = hospitals[0]
+            if p1.re_examination != None and p1.re_examination.date() == datetime.datetime.now().date():
+                level = 1
+            
+            if p1.referral and p1.referral == obj:
+                level = 1
+            
+            print(pytz.utc.localize(datetime.datetime.now()))
+            print(p1.end_date)
+            if p1.organ_donor != "" and (pytz.utc.localize(datetime.datetime.now()) - p1.end_date).days <= 7:
+                level = 1
+        
+        level_map = {
+            '1': 100.0,
+            '2': 100.0,
+            '3': 60.0,
+            '4': 40.0
+        }
+        
+        return int(level_map[str(level)]*percent/100)
+            
+    def get_distance(self, obj):
+        return get_position_distance(self.context.get('position'), (obj.x_pos, obj.y_pos))

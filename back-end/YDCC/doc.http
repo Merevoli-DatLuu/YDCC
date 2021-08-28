@@ -6,7 +6,7 @@
 ####################################################
 
 
-@access_token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjMwMTM2NjY4LCJqdGkiOiJhZTRjMjUyNTcyNTk0NjQ0YTEzZDc2M2Q3ZWYzYWE4MCIsInVzZXJfaWQiOjEwfQ.6ebMqKDjFduKpd-CzKZJ2fkD_-1hkzqA3nVlpN3NClM
+@access_token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjMwMTcwMzUyLCJqdGkiOiJlNjkwNmQyNzQwNTE0OTI3YTNlYjJmNjg0MTI1ZWY3MSIsInVzZXJfaWQiOjEwfQ.almTqhR6Kw6eQvg2OiIfebXmYFq7XF7-aAVLYfLHtgY
 
 
 ########################
@@ -151,5 +151,17 @@ Authorization: Bearer {{access_token}}
 
 ### Get 3
 GET http://127.0.0.1:8000/api/v1/health_insurance/benefit_information/ HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{access_token}}
+
+
+### Get 5
+GET http://127.0.0.1:8000/api/v1/health_insurance/suggest_hospital?lat=123.2234&lon=212.124 HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{access_token}}
+
+
+### Get 5 2
+GET http://127.0.0.1:8000/api/v1/health_insurance/suggest_hospital/distance?lat=123.2234&lon=212.124 HTTP/1.1
 content-type: application/json
 Authorization: Bearer {{access_token}}

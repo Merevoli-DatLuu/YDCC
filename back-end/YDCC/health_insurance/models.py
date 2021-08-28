@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.files.uploadedfile import InMemoryUploadedFile
+from django.db.models.fields import BooleanField
 import qrcode
 from io import BytesIO
 from django.core.files import File
@@ -52,6 +53,7 @@ class Hospital(models.Model):
                             )
     type                    = models.CharField(max_length=256)
     head_certificate        = models.CharField(max_length=20)
+    central_line            = BooleanField(default=False)
     x_pos                   = models.FloatField()
     y_pos                   = models.FloatField()
     
@@ -100,7 +102,7 @@ class HealthRecord(models.Model):
     organ_donor             = models.CharField(max_length=50, blank=True, null=True)
     emergency               = models.BooleanField()
     appropriate_levels      = models.BooleanField()
-        
+
     class Meta:
         ordering = ('-end_date',)
         
