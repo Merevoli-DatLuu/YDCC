@@ -1,0 +1,74 @@
+.healthRecords {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.healthRecordsContainer {
+    width: 100%;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.healthRecordsDetails {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: whitesmoke;
+}
+
+.healthRecordsDetails h4 {
+    margin: 0 auto;
+}
+
+.detailsList {
+    list-style: none;
+}
+
+.deatilsItem {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.healthRecordsContainer table {
+    background-color: whitesmoke;
+    width: 100%;
+}
+
+.healthRecordsContainer table thead tr th,
+.healthRecordsContainer table tbody tr td{
+    text-align: left;
+    padding: 8px;
+}
+
+@media screen and (min-width: 414px) and (max-width: 1024px) {
+    .healthRecords {
+        width: 90%;
+    }
+
+    .healthRecordsContainer {
+        overflow-x: scroll;
+    }
+
+    .healthRecordsContainer table {
+        width: 200%;
+    }
+
+    .healthRecordsContainer::-webkit-scrollbar {
+        display: none;
+    }
+/* 
+    .healthRecordsContainer,
+    .healthRecordsDetails {
+        width: 100%;
+    } */
+}

@@ -1,0 +1,19 @@
+.recordItem {
+    width: 80%;
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 20px;
+}
+
+.recordItemContainer {
+    margin-left: 10px;
+}
+
+.recordItemContainer p {
+    color: #333;
+} 
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .recordItem {
+        width: 100%;
+    }
+}

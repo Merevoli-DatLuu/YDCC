@@ -9,9 +9,29 @@
 
 .newsItem img {
     width: 200px;
-    margin-right: 10px;
+}
+
+.newsItemContainer {
+    margin-left: 10px;
 }
 
 .newsItemContainer p {
     color: #333;
 } 
+
+@media screen and (min-width: 414px) and (max-width: 767px) {
+    .newsItem {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .newsItem img {
+        width: 400px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .newsItem {
+        width: 100%;
+    }
+}

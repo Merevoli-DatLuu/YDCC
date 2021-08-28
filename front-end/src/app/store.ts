@@ -6,6 +6,7 @@ import checkoutReducer from '../features/checkoutFeature';
 import chatbotReducer from '../features/chatbotFeature';
 import searchReducer from '../features/searchFeature';
 import newsReducer from '../features/newsFeature';
+import hospitalReducer from '../features/heathRecordsFeature';
 
 export const store = configureStore({
   reducer: {
@@ -15,7 +16,8 @@ export const store = configureStore({
     checkout: checkoutReducer,
     chatbot: chatbotReducer,
     search: searchReducer,
-    news: newsReducer
+    news: newsReducer,
+    hospital: hospitalReducer
   },
 });
 

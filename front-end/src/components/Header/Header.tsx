@@ -43,7 +43,9 @@ const Header = () => {
                     {
                         (user !== null || userLogin.access_token !== "") ?
                         <div className="userLogin">
-                            <Link to="/account"><img src={profile} alt="profile" /></Link>
+                            <Link to="/account">
+                                <img src={profile} alt="profile" />
+                            </Link>
                             <button type="button" onClick={logout}>Đăng xuất</button>
                         </div> :
                         <Link to="/login">

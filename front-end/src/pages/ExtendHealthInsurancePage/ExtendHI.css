@@ -129,9 +129,13 @@ h1 {
         margin: 0 auto;
     }
 
-    .formExtend-group input, select {
+    .formExtendInput, .formExtendSelect {
         width: 150px;
     }
+
+    /* .formExtend-group input, select {
+        width: 150px;
+    } */
 }
 
 @media screen and (min-width: 414px) and (max-width: 1024px) {

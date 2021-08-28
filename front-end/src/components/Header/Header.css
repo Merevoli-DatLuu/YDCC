@@ -28,6 +28,11 @@
     font-style: italic;
 }
 
+.intro h2,
+.intro p {
+    color: #0097e6;
+}
+
 .auth {
     display: flex;
     align-items: center;
@@ -39,10 +44,8 @@
     font-weight: 700;
     outline: none;
     color: #0097e6;
-    /* color: #20bf6b; */
     background-color: white;
     border: 1px solid #0097e6;
-    /* border: 1px solid #20bf6b; */
     cursor: pointer;
     margin: 0 8px;
     border-radius: 5px;
@@ -51,7 +54,6 @@
 
 .auth button:hover {
     background-color: #0097e6;
-    /* background-color: #20bf6b; */
     color: white;
 }
 

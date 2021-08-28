@@ -8,6 +8,8 @@ import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { selectAuthLogin } from '../../features/authFeature';
 import { selectRooms, pushRoom } from '../../features/chatbotFeature';
 import {useHistory} from 'react-router-dom';
+import NavBar from '../../components/NavBar/NavBar';
+import Footer from '../../components/Footer/Footer';
 
 let socket: any;
 

@@ -24,8 +24,8 @@ const NavBar = () => {
                         (<>
                             <li className="nav-listItem">Giới thiệu</li>
                             <li className="nav-listItem"><Link className="link" to="/news">Tin tức</Link></li>
-                            {/* <li className="nav-listItem">Giao dịch điện tử</li> */}
-                            <li className="nav-listItem"><Link className="link" to="/search">Tra cứu thông tin</Link></li>
+                            <li className="nav-listItem"><Link className="link" to="/suggestions">Gợi ý nơi khám</Link></li>
+                            {/* <li className="nav-listItem"><Link className="link" to="/search">Tra cứu thông tin</Link></li> */}
                             <li className="nav-listItem">Liên hệ</li>
                         </>):
                         (
@@ -34,8 +34,8 @@ const NavBar = () => {
                             <>
                                 <li className="nav-listItem">Giới thiệu</li>
                                 <li className="nav-listItem"><Link className="link" to="/news">Tin tức</Link></li>
-                                {/* <li className="nav-listItem">Giao dịch điện tử</li> */}
-                                <li className="nav-listItem"><Link className="link" to="/search">Tra cứu thông tin</Link></li>
+                                <li className="nav-listItem"><Link className="link" to="/suggestions">Gợi ý nơi khám</Link></li>
+                                {/* <li className="nav-listItem"><Link className="link" to="/search">Tra cứu thông tin</Link></li> */}
                                 <li className="nav-listItem">Liên hệ</li>
                             </>
                         )
