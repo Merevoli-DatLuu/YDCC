@@ -24,7 +24,7 @@ const Suggestions = () => {
             address: "527 Sư Vạn Hạnh – Phường 12 – Quận 10",
             benefit: "80%",
             status: "Đang hoạt động",
-            image: "https://tracuudichvu.com/wp-content/uploads/2021/08/benh-vien-nhan-dan-115.jpg"
+            image: "https://tracuudichvu.com/wp-content/uploads/2021/08/benh-vien-nhan-dan-115.jpg",
         },
         {
             name: "Bệnh viện Thống Nhất",
