@@ -60,7 +60,7 @@ INSTALLED_APPS = [
     'user.apps.UserConfig',
     'citizen.apps.CitizenConfig',
     'payment.apps.PaymentConfig',
-
+    'health_insurance.apps.HealthInsuranceConfig',
 ]
 
 MIDDLEWARE = [
@@ -120,6 +120,11 @@ REST_AUTH_REGISTER_SERIALIZERS = {
 
 SITE_ID = 1
 
+MEDIA_URL = '/static/'
+
+# Path where media is stored
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/')
+
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
@@ -166,8 +171,8 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'user.permissions.AccountVerifyPermission',
     ],
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 2
+    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    # 'PAGE_SIZE': 2
 }
 
 # Password validation
@@ -217,7 +222,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static1/'
 
 # Mail Server Config
 EMAIL_USE_TLS = True

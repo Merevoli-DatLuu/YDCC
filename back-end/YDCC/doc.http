@@ -6,7 +6,7 @@
 ####################################################
 
 
-@access_token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjI5Nzg0MjU0LCJqdGkiOiIyZjkxYWJhZDk1NWI0MzZlYjYzZTg1M2Y3YWQ0MGVlYiIsInVzZXJfaWQiOjJ9.vHRQsCbQCe9_jxSTWl0N9sfucWFw2ESqdNvNDLk3DQ0
+@access_token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjMwMTM2NjY4LCJqdGkiOiJhZTRjMjUyNTcyNTk0NjQ0YTEzZDc2M2Q3ZWYzYWE4MCIsInVzZXJfaWQiOjEwfQ.6ebMqKDjFduKpd-CzKZJ2fkD_-1hkzqA3nVlpN3NClM
 
 
 ########################
@@ -52,6 +52,17 @@ content-type: application/json
     "username": "0129283742",
     "password": "dat123!@#"
 }
+
+
+### User Login
+POST http://127.0.0.1:8000/api/v1/user/login HTTP/1.1
+content-type: application/json
+
+{
+    "username": "0123456789",
+    "password": "Giang@123"
+}
+
 
 
 ### User Login
@@ -113,3 +124,32 @@ content-type: application/json
     "currency": "usd",
     "amount": "2000"
 }
+
+
+#############################
+#    3. Health Insurance    #
+#############################
+
+
+### Get 1, 2
+GET http://127.0.0.1:8000/api/v1/health_insurance/health_insurance/ HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{access_token}}
+
+
+### Get 4
+GET http://127.0.0.1:8000/api/v1/health_insurance/hospital/1 HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{access_token}}
+
+
+### Get 6
+GET http://127.0.0.1:8000/api/v1/health_insurance/healthy_record/ HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{access_token}}
+
+
+### Get 3
+GET http://127.0.0.1:8000/api/v1/health_insurance/benefit_information/ HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{access_token}}

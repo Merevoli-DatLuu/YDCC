@@ -13,7 +13,7 @@ class CitizenGender(object):
 
 
 class Citizen(models.Model):
-    id                      = models.CharField(max_length=12, primary_key=True, editable=False)
+    identity_id             = models.CharField(max_length=12, null=True)
     first_name              = models.CharField(max_length=50)
     last_name               = models.CharField(max_length=50)
     gender                  = models.CharField(
