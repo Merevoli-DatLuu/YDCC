@@ -24,12 +24,24 @@ const initialState = {
 
 export const getSuggestions = createAsyncThunk(
     'search/searchItem',
-    async (access_token: string) => {
-        const res = await axios.get("http://127.0.0.1:8000/api/v1/health_insurance/suggest_hospital/", {
+    async (props: {access_token: string, latitude: number, longitude: number}) => {
+        const res = await axios.get(`http://127.0.0.1:8000/api/v1/health_insurance/suggest_hospital?lon=${props.longitude}&lat=${props.latitude}`, {
             headers: {
-                Authorization: 'Bearer ' + access_token
+                Authorization: 'Bearer ' + props.access_token
             }
-        });
+        }); 
+        return res.data;
+    }
+);
+
+export const getNearest = createAsyncThunk(
+    'search/getNearest',
+    async (props: {access_token: string, latitude: number, longitude: number}) => {
+        const res = await axios.get(`http://127.0.0.1:8000/api/v1/health_insurance/suggest_hospital/distance?lon=${props.longitude}&lat=${props.latitude}`, {
+            headers: {
+                Authorization: 'Bearer ' + props.access_token
+            }
+        }); 
         return res.data;
     }
 );
@@ -44,9 +56,20 @@ export const suggestionSlice = createSlice({
                 return {...state, loading: true};
             })
             .addCase(getSuggestions.fulfilled, (state, action) => {
+                localStorage.setItem("YDCC_suggestion", JSON.stringify(action.payload));
                 return {...state, loading: false, suggestionResults: action.payload};
             })
             .addCase(getSuggestions.rejected, (state) => {
+                return {...state, loading: false, error: true};
+            })
+            .addCase(getNearest.pending, (state) => {
+                return {...state, loading: true};
+            })
+            .addCase(getNearest.fulfilled, (state, action) => {
+                localStorage.setItem("YDCC_suggestion", JSON.stringify(action.payload));
+                return {...state, loading: false, suggestionResults: action.payload};
+            })
+            .addCase(getNearest.rejected, (state) => {
                 return {...state, loading: false, error: true};
             })
     }

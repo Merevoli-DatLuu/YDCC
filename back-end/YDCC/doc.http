@@ -235,6 +235,6 @@ Authorization: Bearer {{access_token}}
 
 
 ### Get 5 2
-GET http://127.0.0.1:8000/api/v1/health_insurance/suggest_hospital/distance?lat=123.2234&lon=212.124 HTTP/1.1
+GET http://127.0.0.1:8000/api/v1/health_insurance/suggest_hospital/distance?lat=123.2234&lon=212.6645 HTTP/1.1
 content-type: application/json
 Authorization: Bearer {{access_token}}

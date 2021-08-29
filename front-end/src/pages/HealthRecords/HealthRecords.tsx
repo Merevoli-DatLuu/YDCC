@@ -7,6 +7,7 @@ import RecordItem from '../../components/RecordItem/RecordItem';
 import { selectHospitals, getHospitals, getHospital, selectHospital} from '../../features/heathRecordsFeature';
 import { useLocation } from 'react-router';
 import hospitalImage from '../../assets/hospital.jpg';
+import { RecordModel } from '../../models/record-model';
 
 const HealthRecords = () => {
     const dispatch = useAppDispatch();
@@ -45,7 +46,7 @@ const HealthRecords = () => {
                     <tbody>
                         {
                             hospitals.length > 0 ?
-                            hospitals.map((hospital, index) => {
+                            hospitals.map((hospital: RecordModel, index) => {
                                 return <RecordItem key={index} hospital={hospital} />
                             }): null
                         }

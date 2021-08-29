@@ -1,7 +1,8 @@
 import './NewsItem.css';
 import newsImage from '../../assets/news.jpg';
+import { NewsModel } from '../../models/news-model';
 
-const NewsItem = (props: {article: any}) => {
+const NewsItem = (props: {article: NewsModel}) => {
 
     return (
         <div className="newsItem">
