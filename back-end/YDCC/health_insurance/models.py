@@ -45,6 +45,7 @@ class Hospital(models.Model):
     # KCD_id                  = models.CharField(max_length=12)
     name                    = models.CharField(max_length=100)
     address                 = models.CharField(max_length=256)
+    image                   = models.ImageField(upload_to='static/hospital', null=True)
     license_id              = models.CharField(max_length=12)
     license_date            = models.DateField()
     status                  = models.CharField(

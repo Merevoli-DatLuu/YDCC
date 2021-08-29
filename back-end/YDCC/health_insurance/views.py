@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404
 from rest_framework.generics import ListAPIView, ListCreateAPIView, RetrieveAPIView
+from rest_framework.response import Response
 
 from .models import HealthInsurance, HealthRecord, Hospital, RegimeBenefit
 from .serializers import HealthInsuranceSerializer, HealthRecordSerializer, HospitalSerializer, BenefitInformationSerializer, SuggestHospitalSerializer
@@ -68,7 +69,7 @@ class SuggestHospitalListView(ListAPIView):
         return context
     
     def compare_key(elem):
-        return [elem.percent, elem.distance]
+        return [elem['percent'], elem['distance']]
     
     def get_response(self):
         response = super().get_response()
@@ -77,6 +78,23 @@ class SuggestHospitalListView(ListAPIView):
         response.data = hospitals
         return response
 
+    # def list(self, request, *args, **kwargs):
+    #     queryset = self.filter_queryset(self.get_queryset())
+
+    #     page = self.paginate_queryset(queryset)
+    #     if page is not None:
+    #         serializer = self.get_serializer(page, many=True)
+    #         return self.get_paginated_response(serializer.data)
+
+    #     serializer = self.get_serializer(queryset, many=True)
+    #     response = Response(serializer.data)
+    
+    #     hospitals = [dict(i) for i in response.data]
+        
+    #     print(hospitals)
+    #     hospitals.sort(key=self.compare_key)
+    #     response.data = hospitals
+    #     return response
 
 class SuggestHospitalDistanceListView(ListAPIView):
     serializer_class = SuggestHospitalSerializer
@@ -97,12 +115,31 @@ class SuggestHospitalDistanceListView(ListAPIView):
         
         return context
     
-    def compare_key(elem):
-        return elem.distance
+    def compare_key(elem, a):
+        print(elem, a)
+        return elem['distance']
     
     def get_response(self):
         response = super().get_response()
         hospitals = response.data
+        print(hospitals)
         hospitals.sort(key=self.compare_key)
         response.data = hospitals
         return response
+    
+    # def list(self, request, *args, **kwargs):
+    #     queryset = self.filter_queryset(self.get_queryset())
+
+    #     page = self.paginate_queryset(queryset)
+    #     if page is not None:
+    #         serializer = self.get_serializer(page, many=True)
+    #         return self.get_paginated_response(serializer.data)
+
+    #     serializer = self.get_serializer(queryset, many=True)
+    #     response = Response(serializer.data)
+        
+    #     hospitals = [dict(i) for i in response.data]
+    #     print(hospitals)
+    #     hospitals.sort(key=self.compare_key)
+    #     response.data = hospitals
+    #     return response

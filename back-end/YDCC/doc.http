@@ -6,7 +6,7 @@
 ####################################################
 
 
-@access_token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjMwMTcwMzUyLCJqdGkiOiJlNjkwNmQyNzQwNTE0OTI3YTNlYjJmNjg0MTI1ZWY3MSIsInVzZXJfaWQiOjEwfQ.almTqhR6Kw6eQvg2OiIfebXmYFq7XF7-aAVLYfLHtgY
+@access_token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjMwMjEyMjYwLCJqdGkiOiJkYzE4ZTQ1NDMzOTk0MGVmYmUyYzIxM2RhYmZkZjIwOCIsInVzZXJfaWQiOjExfQ.9K8-qDDvmEcLn9RyGxu6qU5Z-EIIyzt9rRNDaBFj_s8
 
 
 ########################
@@ -26,6 +26,79 @@ content-type: application/json
     "name": "Lưu Thành Đạt",
     "date_of_birth": "2000-02-17",
     "phone": "0776583337"
+}
+
+
+
+### Test Register
+POST http://127.0.0.1:8000/api/v1/user/register HTTP/1.1
+content-type: application/json
+
+{
+    "username": "9274174947",
+    "email": "kcg54315@cuoly.com",
+    "password1": "User@123",
+    "password2": "User@123",
+    "name": "Phan Hoài Thanh",
+    "date_of_birth": "2000-02-17",
+    "phone": "038150647"
+}
+
+### Test Register
+POST http://127.0.0.1:8000/api/v1/user/register HTTP/1.1
+content-type: application/json
+
+{
+    "username": "2940174096",
+    "email": "khg98019@zwoho.com",
+    "password1": "User@123",
+    "password2": "User@123",
+    "name": "Đỗ Ðức Ân",
+    "date_of_birth": "2000-05-09",
+    "phone": "038771710"
+}
+
+### Test Register
+POST http://127.0.0.1:8000/api/v1/user/register HTTP/1.1
+content-type: application/json
+
+{
+    "username": "1849503785",
+    "email": "kcg543435@cuoly.com",
+    "password1": "User@123",
+    "password2": "User@123",
+    "name": "Hồ Duy Thành",
+    "date_of_birth": "2000-06-29",
+    "phone": "0384332424"
+}
+
+### Test Register
+POST http://127.0.0.1:8000/api/v1/user/register HTTP/1.1
+content-type: application/json
+
+{
+    "username": "0684839345",
+    "email": "kc455315@cuoly.com",
+    "password1": "User@123",
+    "password2": "User@123",
+    "name": "Hoàng Bảo Huỳnh",
+    "date_of_birth": "2000-08-29",
+    "phone": "082893734"
+}
+
+
+### Test Register
+POST http://127.0.0.1:8000/api/v1/user/register HTTP/1.1
+content-type: application/json
+
+{
+    "username": "2859679233",
+    "email": "ajd315@cuoly.com",
+    "password1": "User@123",
+    "password2": "User@123",
+    "name": "Nguyễn Tấn Trình",
+    "date_of_birth": "2000-09-23",
+    "phone": "0828398734"
 }
 
 
@@ -49,8 +122,8 @@ POST http://127.0.0.1:8000/api/v1/user/login HTTP/1.1
 content-type: application/json
 
 {
-    "username": "0129283742",
-    "password": "dat123!@#"
+    "username": "9274174947",
+    "password": "User@123"
 }
 
 

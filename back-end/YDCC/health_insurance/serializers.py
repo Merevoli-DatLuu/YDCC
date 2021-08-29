@@ -128,7 +128,7 @@ class SuggestHospitalSerializer(serializers.ModelSerializer):
             level = 4
         else:
             p1 = hospitals[0]
-            if p1.re_examination != None and p1.re_examination.date() == datetime.datetime.now().date():
+            if p1.re_examination and p1.re_examination.date() == datetime.datetime.now().date():
                 level = 1
             
             if p1.referral and p1.referral == obj:
@@ -136,8 +136,11 @@ class SuggestHospitalSerializer(serializers.ModelSerializer):
             
             print(pytz.utc.localize(datetime.datetime.now()))
             print(p1.end_date)
-            if p1.organ_donor != "" and (pytz.utc.localize(datetime.datetime.now()) - p1.end_date).days <= 7:
+            if p1.organ_donor and (pytz.utc.localize(datetime.datetime.now()) - p1.end_date).days <= 7:
                 level = 1
+        
+        
+        print(city1, city2, district1, district2, level)
         
         level_map = {
             '1': 100.0,
