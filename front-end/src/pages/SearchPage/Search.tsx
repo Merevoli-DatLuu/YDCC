@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+// import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import './Search.css';
 
 const Search = () => {
-    const dispatch = useAppDispatch();
+    // const dispatch = useAppDispatch();
     const [search, setSearch] = useState("");
     // const searchResults = useAppSelector(selectSearchResult);
 

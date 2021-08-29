@@ -5,6 +5,7 @@ import NewsItem from '../../components/NewsItem/NewsItem';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { selectNews, getNews } from '../../features/newsFeature';
 import { useLocation } from 'react-router';
+import { NewsModel } from '../../models/news-model';
 
 const News = () => {
     const dispatch = useAppDispatch();
@@ -20,7 +21,7 @@ const News = () => {
             <div className="newsContainer">
                 {
                     news.articles ?
-                    news.articles.map((article, index) => {
+                    news.articles.map((article: NewsModel, index) => {
                         return <NewsItem key={index} article={article} />
                     }) : null
                 }
