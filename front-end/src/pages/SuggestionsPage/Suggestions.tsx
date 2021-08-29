@@ -40,8 +40,8 @@ const Suggestions = () => {
     }, [radio, userLogin.access_token, dispatch, latitude, longitude]);
 
     const showPosition = (position: any) => {
-        console.log("lat" + position.coords.latitude);
-        console.log("long" + position.coords.longitude);
+        // console.log("lat" + position.coords.latitude);
+        // console.log("long" + position.coords.longitude);
         setLatitude(position.coords.latitude);
         setLongitude(position.coords.longitude);
     };
