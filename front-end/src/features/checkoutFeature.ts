@@ -15,7 +15,7 @@ export const processToCheckOut = createAsyncThunk(
     'checkout/checkout',
     async (props: {username: string, name: string, date_of_birth: string, email: string, phone: string, cash: number}) => {
         const stripe = await stripePromise;
-        let result = {sessionId: ""};
+        // let result = {sessionId: ""};
         const checkoutSession = await axios.post("http://localhost:8000/api/v1/payment/create-checkout-session", {
             price_data: {
                 currency: 'vnd',

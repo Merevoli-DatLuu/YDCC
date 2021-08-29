@@ -1,6 +1,5 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../app/store';
-import axios from 'axios';
 
 const initialState = {
     rooms: [{username: ""}],

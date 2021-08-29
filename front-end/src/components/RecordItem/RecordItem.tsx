@@ -2,29 +2,9 @@ import './RecordItem.css';
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../app/hooks';
 import { selectUser } from '../../features/accountFeature';
+import { RecordModel } from '../../models/record-model';
 
-export interface Hospital {
-    "id": number,
-    "patient_name": string,
-    "hospital_name": string,
-    "hospital_referral_name": string,
-    "symptom": string,
-    "diagnose": string,
-    "treatment": string,
-    "doctor": string,
-    "note": string,
-    "start_date": string,
-    "end_date": string,
-    "re_examination": null,
-    "organ_donor": null,
-    "emergency": boolean,
-    "appropriate_levels": boolean,
-    "health_insurance_id": string,
-    "hospital_id": number,
-    "referral": null
-};
-
-const RecordItem = (props: {hospital: Hospital}) => {
+const RecordItem = (props: {hospital: RecordModel}) => {
     const hospital = "1";
     const user = useAppSelector(selectUser);
     let local = localStorage.getItem("YDCC_account");

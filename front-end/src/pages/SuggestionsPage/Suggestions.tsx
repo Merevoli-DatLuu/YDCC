@@ -1,84 +1,67 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import SuggestionItem from '../../components/SuggestionItem/SuggestionItem';
 import './Suggestions.css';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { selectSuggestion, getSuggestions } from '../../features/searchFeature';
+import { selectSuggestion, getSuggestions, getNearest } from '../../features/searchFeature';
 import { selectAuthLogin } from '../../features/authFeature';
+import { SuggestionModel } from '../../models/suggest-model';
 
 const Suggestions = () => {
     const dispatch = useAppDispatch();
+    const [radio, setRadio] = useState("best");
+    const [latitude, setLatitude] = useState(0);
+    const [longitude, setLongitude] = useState(0);
     const suggestions = useAppSelector(selectSuggestion);
     const userLogin = useAppSelector(selectAuthLogin);
+    let suggestLocal = localStorage.getItem("YDCC_suggestion");
+    let suggestionList: Array<SuggestionModel> = suggestLocal !== null ? JSON.parse(suggestLocal) : [];
 
     useEffect(() => {
         let user = localStorage.getItem("YDCC_token");
         const auth = user !== null ? JSON.parse(user) : "";
         if(userLogin.access_token !== "" && user !== null) {
-            dispatch(getSuggestions(auth.access_token));
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else { 
+                console.log("Geolocation is not supported by this browser.");
+            };
+            if(latitude > 0 && longitude > 0) dispatch(getSuggestions({access_token: auth.access_token, latitude, longitude}));
         };
-    }, [dispatch, userLogin.access_token]);
+        
+    }, [dispatch, userLogin.access_token, latitude, longitude]);
 
-    const hospitalList = [
-        {
-            name: "Bệnh viện nhân dân 115",
-            address: "527 Sư Vạn Hạnh – Phường 12 – Quận 10",
-            benefit: "80%",
-            status: "Đang hoạt động",
-            image: "https://tracuudichvu.com/wp-content/uploads/2021/08/benh-vien-nhan-dan-115.jpg",
-        },
-        {
-            name: "Bệnh viện Thống Nhất",
-            address: "01 Lý Thường Kiệt – Phường 7 - Quận Tân Bình",
-            benefit: "80%",
-            status: "Đang hoạt động",
-            image: "https://thuthuat.taimienphi.vn/cf/Images/tt/2019/12/5/benh-vien-thong-nhat-tp-hcm.jpg"
-        },
-        {
-            name: "Bệnh viện 175",
-            address: "786 Nguyễn Kiệm- P. 3- Q. Gò vấp",
-            benefit: "80%",
-            status: "Đang hoạt động",
-            image: "https://thuocdantoc.vn/wp-content/uploads/2019/01/benh-vien-175-1.jpg"
-        },
-        {
-            name: "Bệnh viện đa khoa Bưu Điện",
-            address: "Lô B đường Thành Thái - P15- Quận 10 ",
-            benefit: "48%",
-            status: "Đang hoạt động",
-            image: "https://media.foody.vn/res/g11/106762/prof/s/foody-mobile-bv-dk-bd-2-jpg-598-635624561501262294.jpg"
-        },
-        {
-            name: "Bệnh viện Nguyễn Trãi",
-            address: "314 Nguyễn Trãi – Phường 8 – Quận 5",
-            benefit: "48%",
-            status: "Đang hoạt động",
-            image: "https://vivita.vn/wp-content/uploads/2021/07/benh-vien-nguyen-trai.jpg"
-        },
-        {
-            name: "Bệnh viện Nhân dân Gia Định",
-            address: "01 Nơ Trang Long – Phường 7 – Q.Bình Thạnh ",
-            benefit: "32%",
-            status: "Đang hoạt động",
-            image: "https://photo-cms-sggp.zadn.vn/w580/Uploaded/2021/bpivpawv/2021_06_13/bvgiadinh1_jdhk.jpg"
-        }
-    ];
+    useEffect(() => {
+        let user = localStorage.getItem("YDCC_token");
+        const auth = user !== null ? JSON.parse(user) : "";
+        if(userLogin.access_token !== "" && user !== null) {
+            if(radio === "nearest") dispatch(getNearest({access_token: auth.access_token, latitude, longitude}));
+            if(radio === "best") dispatch(getSuggestions({access_token: auth.access_token, latitude, longitude}));
+        };
+    }, [radio, userLogin.access_token, dispatch, latitude, longitude]);
+
+    const showPosition = (position: any) => {
+        console.log("lat" + position.coords.latitude);
+        console.log("long" + position.coords.longitude);
+        setLatitude(position.coords.latitude);
+        setLongitude(position.coords.longitude);
+    };
 
     return (
-        <div className="suggestions">
+        <div id="suggestions" className="suggestions">
             <div className="suggestionsSection">
                 <div className="suggestionsGroup">
-                    <input name="suggest" type="radio" value="best" checked /> 
+                    <input name="suggest" type="radio" checked={radio === "best"} value="best" onChange={e => setRadio(e.target.value)} /> 
                     <label htmlFor="best">Chế độ tốt nhất</label>
                 </div>
                 <div className="suggestionsGroup">
-                    <input name="suggest" type="radio" value="nearest" /> 
+                    <input name="suggest" type="radio" checked={radio === "nearest"} value="nearest" onChange={e => setRadio(e.target.value)} /> 
                     <label htmlFor="nearest">Cơ sở gần nhất</label>
                 </div>
             </div>
             <div className="suggestionsResults">
                 {
-                    hospitalList.length > 0 ?
-                    hospitalList.map((hospital, index) => {
+                    (suggestionList.length > 0 || suggestions.length > 0) ?
+                    suggestionList.map((hospital: SuggestionModel, index) => {
                         return <SuggestionItem key={index} hospital={hospital} />
                     }): null
                 }

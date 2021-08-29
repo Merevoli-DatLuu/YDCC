@@ -30,6 +30,7 @@ const Header = () => {
         };
         localStorage.removeItem("YDCC_token");
         localStorage.removeItem("YDCC_account");
+        localStorage.removeItem("YDCC_suggestion");
         dispatch(userLogout(login));
     };
 

@@ -6,7 +6,7 @@
 ####################################################
 
 
-@access_token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjMwMTcwMzUyLCJqdGkiOiJlNjkwNmQyNzQwNTE0OTI3YTNlYjJmNjg0MTI1ZWY3MSIsInVzZXJfaWQiOjEwfQ.almTqhR6Kw6eQvg2OiIfebXmYFq7XF7-aAVLYfLHtgY
+@access_token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjMwMjAyMjMxLCJqdGkiOiI0OTJiNjEyZmU4MGY0NGRhYjg5ZThiZjI0ZDliOWVmNCIsInVzZXJfaWQiOjEwfQ.8gTDgjlVph6hDEX2tyyMFCgYRGvzPDB7-GZKyD7nNMw
 
 
 ########################
@@ -162,6 +162,6 @@ Authorization: Bearer {{access_token}}
 
 
 ### Get 5 2
-GET http://127.0.0.1:8000/api/v1/health_insurance/suggest_hospital/distance?lat=123.2234&lon=212.124 HTTP/1.1
+GET http://127.0.0.1:8000/api/v1/health_insurance/suggest_hospital/distance?lat=123.2234&lon=212.6645 HTTP/1.1
 content-type: application/json
 Authorization: Bearer {{access_token}}
