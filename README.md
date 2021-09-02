@@ -1,6 +1,6 @@
 <div align="center">
 
-# Flazer YDVV
+# Flazer YDCC
 
 <img src="./preview/facebook_profile_image.png" width="60%">
 
