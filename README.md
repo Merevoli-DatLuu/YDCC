@@ -2,8 +2,6 @@
 
 # Flazer YDVV
 
-A **secure** and **easy-to-use** File Manager Application
-
 <img src="./preview/facebook_profile_image.png" width="60%">
 
 </div>
